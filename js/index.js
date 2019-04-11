@@ -133,6 +133,8 @@ let tieDye = () => {
 let button = document.querySelector("button");
 button.addEventListener("click",(x)=>{
   document.body.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Tie-dye.png')";
+  
+  document.body.style.backgroundSize = "auto";
   document.body.style.color="white";
   document.querySelector("h1").textContent = "'Muddy water is best cleared by leaving it alone.' – Alan Watts."
   headerImg.setAttribute('src', "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Enso.svg/379px-Enso.svg.png");
