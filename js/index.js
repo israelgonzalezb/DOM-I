@@ -104,12 +104,37 @@ document.querySelector("nav").appendChild(hola);
 
 navLinks.forEach(x=>x.style.color="green");
 
-// event... on click make eveerything tie dye
 
-let tieDye = function(x){};
+
+// set random color to p elements
+let tieDye = () => {
+  let randomColor = x => {
+    let arr = [];
+    let rgbToHex = function (rgb) { 
+      let hex = Number(rgb).toString(16);
+      if (hex.length < 2) {
+         hex = "0" + hex;
+      }
+        return hex;
+      };
+    for(let i =0;i<3;i++){
+      arr.push(rgbToHex(Math.floor(Math.random() * (255 - 16 + 1)) + 16));
+    }
+    return "#"+arr.join("");
+  }
+  let allPElements = document.querySelectorAll("p");
+  allPElements.forEach( x => x.style.setProperty("color",randomColor()));
+}
+
+// event... on button click make background tie dye
+
+
 
 let button = document.querySelector("button");
 button.addEventListener("click",(x)=>{
   document.body.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Tie-dye.png')";
-  document.body.toggleAttribute("backgroundImage");
+  document.body.style.color="white";
+  document.querySelector("h1").textContent = "'Muddy water is best cleared by leaving it alone.' – Alan Watts."
+  headerImg.setAttribute('src', "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Enso.svg/379px-Enso.svg.png");
+  tieDye();
 });
