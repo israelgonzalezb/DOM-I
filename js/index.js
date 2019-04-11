@@ -55,5 +55,61 @@ for(let i = 1;i<7;i++){
 let ctaContent = Object.keys(siteContent["cta"]);
 for(let i = 0;i<ctaContent.length;i++){
   let tag = document.querySelector(ctaContent[i]);
-  tag !== null?tag.textContent = siteContent["cta"][ctaContent[i]]:false;
+  (tag !== null) ? (tag.textContent = siteContent["cta"][ctaContent[i]]) : (false);
 }
+
+// main content selectors
+let textContent = document.querySelectorAll(".text-content");
+let mainContentKeys = Object.keys(siteContent["main-content"]);
+
+let h4Content = mainContentKeys.filter( (x) => x.search("h4") > -1 );
+let h4Elements = document.querySelectorAll("h4");
+for (let i = 0; i < h4Elements.length; i++){
+  h4Elements[i].textContent = siteContent["main-content"][h4Content[i]];
+}
+
+let mainPContent = mainContentKeys.filter( (x) => x.search("content") > -1 );
+let mainPElements = document.querySelectorAll(".main-content p");
+for (let i = 0; i < mainPElements.length; i++){
+  mainPElements[i].textContent = siteContent["main-content"][mainPContent[i]];
+}
+
+// contact selectors
+let contactKeys = Object.keys(siteContent.contact);
+let contactNodes = document.querySelector(".contact").children;
+let contactNodesArray = Array.from(contactNodes);
+for (let i = 0; i < contactNodesArray.length; i++){
+  contactNodesArray[i].textContent = siteContent["contact"][contactKeys[i]];
+}
+
+// footer selector
+document.querySelector("footer").children[0].textContent=siteContent["footer"]["copyright"];
+
+
+// prepend item to nav bar
+let howdy = document.createElement("a");
+howdy.textContent="Howdy"
+howdy.style.color="green";
+howdy.setAttribute("src","#")
+document.querySelector("nav").prepend(howdy);
+
+// append item to nav bar
+let hola = document.createElement("a");
+hola.textContent="Hola"
+hola.style.color="green";
+hola.setAttribute("src","#")
+document.querySelector("nav").appendChild(hola);
+
+// green nav text
+
+navLinks.forEach(x=>x.style.color="green");
+
+// event... on click make eveerything tie dye
+
+let tieDye = function(x){};
+
+let button = document.querySelector("button");
+button.addEventListener("click",(x)=>{
+  document.body.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Tie-dye.png')";
+  document.body.toggleAttribute("backgroundImage");
+});
